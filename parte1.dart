@@ -69,7 +69,25 @@ void main(List<String> args) {
 
           grupos.add(grupo);
   }
-        
+        // Mostrar los grupos formados
+        print('\nGrupos formados:');
+        for (var i = 0; i < cantGrupos; i++) {
+          print('Grupo ${i + 1}: ${grupos[i]}');
+        }
+        //-----------------------------------------------------------//
+        int _calcularCantidadPersonas(String dificultad) {
+        switch (dificultad) {
+          case 'facil':
+            return Random().nextInt(1) + 2;
+          case 'medio':
+            return Random().nextInt(2) + 3;
+          case 'alto':
+            return Random().nextInt(4) + 5; 
+          default:
+            return 0;
+        }
+      }
+
         break;
       case 2:
         break;
