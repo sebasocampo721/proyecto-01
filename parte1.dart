@@ -4,14 +4,15 @@ import 'dart:math';
 void main(List<String> args) {
   int opcion;
   do {
-    print("bienvenido a la app de creacion de exposiciones");
-    print("1. crear grupos");
-    print("2. reorganizar grupos");
-    print("3. utilizar datos guardados");
-    print("4. ");
-    print("5. salir");
-    print("digite la opcion deseada");
+    print("Bienvenido a la app de creación de exposiciones");
+    print("1. Crear grupos");
+    print("2. Reorganizar grupos");
+    print("3. Utilizar datos guardados");
+    print("4. Otra opción (por implementar)");
+    print("5. Salir");
+    print("Digite la opción deseada:");
     opcion = int.parse(stdin.readLineSync()!);
+    
     if (opcion >= 1 && opcion < 5) {}
     switch (opcion) {
       case 1:
@@ -34,6 +35,7 @@ void main(List<String> args) {
           temas = stdin.readLineSync()!;
           tema.add(temas); //se agrega el tema a la lista
         }
+        //------------------------------------------------------------//
         for (var i = 1; i <= cantGrupos; i++) {
         print('Ingrese la dificultad del tema $i (facil, medio, alto):');
         dificultad = stdin.readLineSync()!;
@@ -41,6 +43,7 @@ void main(List<String> args) {
           dificultadTema.add(dificultad.toLowerCase());
         }
       }
+      //-------------------------------------------------------------//
         print("ingrese la cantidad de alumnos");
         cantNombres = int.parse(stdin.readLineSync()!);
         for (var i = 0; i < cantNombres; i++) {
