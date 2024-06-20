@@ -16,4 +16,4 @@ main() {
     if (numBuscar == numeros) ;
     print(numBuscar);
   }
-}
+} 
