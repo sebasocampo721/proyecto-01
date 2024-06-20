@@ -15,6 +15,16 @@ void main(List<String> args) {
     }
    switch(opcion){
       case 1:
+      int cantTemas; 
+      String temas, complejidad;
+      List<String> tema= [];
+      print("ingrese la cantidad de temas ");
+      cantTemas=int.parse(stdin.readLineSync()!);
+      for (var i = 0; i< cantTemas; i++){
+      print("ingrese el tema #${i+1}");
+      temas=stdin.readLineSync()!;
+      tema.add(temas);//se agrega el tema a la lista
+    }
       break;
       case 2:
       break;
