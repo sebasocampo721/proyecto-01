@@ -15,6 +15,19 @@ void main(List<String> args) {
     }
    switch(opcion){
       case 1:
+      do{
+        print("");
+        print("1. ");
+        print("2. ");
+        print("3. editar tema ");
+        print("4. eliminar tema");
+        print("5. salir");
+        print("digite la opcion deseada");
+        opcion=int.parse(stdin.readLineSync()!);
+        if(opcion>=1 && opcion< 5){
+      }
+      } while (opcion!=5);
+
       int cantTemas; 
       String temas, complejidad;
       List<String> tema= [];
@@ -30,7 +43,7 @@ void main(List<String> args) {
       print("ingrese la complejidad del tema (baja-media-alta) #${i+1}");
       complejidad=stdin.readLineSync()!;
       complejidadTema.add(complejidad);//se agrega el tema a la lista
-
+      }
       List<String> nombres = []; // Lista para almacenar los nombres
       // Ciclo para ingresar nombres hasta que el usuario decida terminar
       while (true) {
