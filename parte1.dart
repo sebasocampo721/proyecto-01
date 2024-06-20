@@ -4,8 +4,8 @@ void main(List<String> args) {
    do{
     print("bienvenido a la app de creacion de exposiciones");
     print("1. crear grupos");
-    print("2. ");
-    print("3. ");
+    print("2. reorganizar grupos");
+    print("3. utilizar datos guardados");
     print("4. ");
     print("5. salir");
     print("digite la opcion deseada");
@@ -18,6 +18,7 @@ void main(List<String> args) {
       int cantTemas; 
       String temas, complejidad;
       List<String> tema= [];
+      List<String> complejidadTema= [];
       print("ingrese la cantidad de temas ");
       cantTemas=int.parse(stdin.readLineSync()!);
       for (var i = 0; i< cantTemas; i++){
@@ -25,8 +26,12 @@ void main(List<String> args) {
       temas=stdin.readLineSync()!;
       tema.add(temas);//se agrega el tema a la lista
 
+      for (var i = 0; i< cantTemas; i++){
+      print("ingrese la complejidad del tema (baja-media-alta) #${i+1}");
+      complejidad=stdin.readLineSync()!;
+      complejidadTema.add(complejidad);//se agrega el tema a la lista
+
       List<String> nombres = []; // Lista para almacenar los nombres
-  
       // Ciclo para ingresar nombres hasta que el usuario decida terminar
       while (true) {
         // Solicitar al usuario que ingrese un nombre
@@ -36,10 +41,8 @@ void main(List<String> args) {
         if (nombre.toLowerCase() == 'fin') {
           break; // Terminar el ciclo si el usuario escribe "fin"
         }
-        
         nombres.add(nombre); // Agregar el nombre a la lista
       }
-      
       // Imprimir la lista de nombres ingresados
       print('\nLista de nombres ingresados:');
       nombres.forEach((nombre) => print(nombre));
