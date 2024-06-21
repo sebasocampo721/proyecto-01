@@ -103,8 +103,10 @@ List<List<String>> crearGrupos() {
   }
 
   return grupos;
+  
 }
 
+    
 int _calcularCantidadPersonas(String dificultad) {
   switch (dificultad) {
     case 'facil':
@@ -131,15 +133,15 @@ void reorganizarGrupos(List<List<String>> grupos) {
   var grupoSeleccionado = int.parse(stdin.readLineSync()!) - 1;
 
   if (grupoSeleccionado >= 0 && grupoSeleccionado < grupos.length) {
-    print("Grupo seleccionado: ${grupos[grupoSeleccionado]}");
-    print("Ingrese los nuevos nombres del grupo separados por coma:");
-    var nuevosnombres = stdin.readLineSync()!.split(',').map((e) => e.trim()).toList();
+    print("Tema actual del Grupo ${grupoSeleccionado + 1}: ${grupos[grupoSeleccionado][0]}");
+    print("Ingrese el nuevo tema para el grupo:");
+    var nuevoTema = stdin.readLineSync()!;
 
-    grupos[grupoSeleccionado] = nuevosnombres;
+    grupos[grupoSeleccionado][0] = nuevoTema;
     
-    print("Grupo actualizado:");
-    print('Grupo ${grupoSeleccionado + 1}: ${grupos[grupoSeleccionado]}');
+    print("Tema actualizado del Grupo ${grupoSeleccionado + 1}: $nuevoTema");
   } else {
     print("Número de grupo inválido.");
   }
+  
 }
