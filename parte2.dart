@@ -30,7 +30,7 @@ void main(List<String> args) {
       case 3:
         break;
       case 4:
-        print("Funcionalidad 'Otra opción' aún no implementada.");
+        print("");
         break;
       case 5:
         print("Adiós");
