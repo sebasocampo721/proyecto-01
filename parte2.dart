@@ -132,10 +132,10 @@ void reorganizarGrupos(List<List<String>> grupos) {
 
   if (grupoSeleccionado >= 0 && grupoSeleccionado < grupos.length) {
     print("Grupo seleccionado: ${grupos[grupoSeleccionado]}");
-    print("Ingrese los nuevos miembros del grupo separados por coma:");
-    var nuevosMiembros = stdin.readLineSync()!.split(',').map((e) => e.trim()).toList();
+    print("Ingrese los nuevos nombres del grupo separados por coma:");
+    var nuevosnombres = stdin.readLineSync()!.split(',').map((e) => e.trim()).toList();
 
-    grupos[grupoSeleccionado] = nuevosMiembros;
+    grupos[grupoSeleccionado] = nuevosnombres;
     
     print("Grupo actualizado:");
     print('Grupo ${grupoSeleccionado + 1}: ${grupos[grupoSeleccionado]}');
