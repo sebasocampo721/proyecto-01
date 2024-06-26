@@ -1,9 +1,16 @@
 import 'dart:io';
 import 'dart:math';
 
+class Grupo {
+  String tema;
+  List<String> nombres;
+
+  Grupo(this.tema, this.nombres);
+}
+
 void main(List<String> args) {
   int opcion;
-  List<List<String>> grupos = [];
+  List<Grupo> grupos = [];
 
   do {
     print("Bienvenido a la app de creación de exposiciones");
@@ -50,7 +57,7 @@ void main(List<String> args) {
   } while (opcion != 5);
 }
 
-List<List<String>> crearGrupos() {
+List<Grupo> crearGrupos() {
   int cantGrupos;
   List<String> temas = [];
   List<String> dificultadTema = [];
@@ -126,7 +133,7 @@ List<List<String>> crearGrupos() {
     }
   } while (opcion1 != 1 && opcion1 != 2);
 
-  var grupos = <List<String>>[];
+  var grupos = <Grupo>[];
   var personasRestantes = [...nombres];
 
   for (var i = 0; i < cantGrupos; i++) {
@@ -134,22 +141,17 @@ List<List<String>> crearGrupos() {
     var dificultad = dificultadTema[i];
     var cantidadPersonasGrupo = _calcularCantidadPersonas(dificultad);
 
-    if (personasRestantes.isNotEmpty) {
-      var indiceAleatorio = Random().nextInt(personasRestantes.length);
-      grupo.add(personasRestantes.removeAt(indiceAleatorio));
-    }
-
     while (grupo.length < cantidadPersonasGrupo && personasRestantes.isNotEmpty) {
       var indiceAleatorio = Random().nextInt(personasRestantes.length);
       grupo.add(personasRestantes.removeAt(indiceAleatorio));
     }
 
-    grupos.add(grupo);
+    grupos.add(Grupo(temas[i], grupo));
   }
 
   print('\nGrupos formados:');
   for (var i = 0; i < cantGrupos; i++) {
-    print('Grupo ${i + 1}: ${grupos[i]}');
+    print('Grupo ${i + 1}: Tema: ${grupos[i].tema}, Miembros: ${grupos[i].nombres}');
   }
 
   return grupos;
@@ -168,12 +170,12 @@ int _calcularCantidadPersonas(String dificultad) {
   }
 }
 
-void reorganizarGrupos(List<List<String>> grupos) {
+void reorganizarGrupos(List<Grupo> grupos) {
   print("Reorganización de Grupos:");
 
   // Mostrar los grupos actuales
   for (var i = 0; i < grupos.length; i++) {
-    print('Grupo ${i + 1}: ${grupos[i]}');
+    print('Grupo ${i + 1}: Tema: ${grupos[i].tema}, Miembros: ${grupos[i].nombres}');
   }
 
   // Permitir al usuario seleccionar un grupo y reorganizarlo
@@ -181,11 +183,11 @@ void reorganizarGrupos(List<List<String>> grupos) {
   var grupoSeleccionado = int.tryParse(stdin.readLineSync()!) ?? 0;
 
   if (grupoSeleccionado > 0 && grupoSeleccionado <= grupos.length) {
-    print("Tema actual del Grupo ${grupoSeleccionado}: ${grupos[grupoSeleccionado - 1][0]}");
+    print("Tema actual del Grupo ${grupoSeleccionado}: ${grupos[grupoSeleccionado - 1].tema}");
     print("Ingrese el nuevo tema para el grupo:");
     var nuevoTema = stdin.readLineSync()!;
 
-    grupos[grupoSeleccionado - 1][0] = nuevoTema;
+    grupos[grupoSeleccionado - 1].tema = nuevoTema;
 
     print("Tema actualizado del Grupo ${grupoSeleccionado}: $nuevoTema");
   } else {
@@ -193,14 +195,14 @@ void reorganizarGrupos(List<List<String>> grupos) {
   }
 }
 
-void mostrarGrupos(List<List<String>> grupos) {
+void mostrarGrupos(List<Grupo> grupos) {
   print('\nGrupos existentes:');
   for (var i = 0; i < grupos.length; i++) {
-    print('Grupo ${i + 1}: ${grupos[i]}');
+    print('Grupo ${i + 1}: Tema: ${grupos[i].tema}, Miembros: ${grupos[i].nombres}');
   }
 }
 
-void eliminarGrupo(List<List<String>> grupos) {
+void eliminarGrupo(List<Grupo> grupos) {
   print("Eliminar Grupo:");
 
   mostrarGrupos(grupos);
@@ -210,7 +212,7 @@ void eliminarGrupo(List<List<String>> grupos) {
 
   if (grupoSeleccionado > 0 && grupoSeleccionado <= grupos.length) {
     var grupoEliminado = grupos.removeAt(grupoSeleccionado - 1);
-    print("Grupo $grupoSeleccionado: $grupoEliminado eliminado correctamente.");
+    print("Grupo $grupoSeleccionado: Tema: ${grupoEliminado.tema}, Miembros: ${grupoEliminado.nombres} eliminado correctamente.");
   } else {
     print("Número de grupo inválido.");
   }
