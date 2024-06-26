@@ -54,7 +54,7 @@ List<List<String>> crearGrupos() {
   int cantGrupos;
   List<String> temas = [];
   List<String> dificultadTema = [];
-  List<String> nombres = [];
+  List<String> nombres = []; // Lista global para almacenar nombres
   int cantNombres;
   String nombre;
 
@@ -71,14 +71,60 @@ List<List<String>> crearGrupos() {
     dificultadTema.add(dificultad);
   }
 
-  print("Ingrese la cantidad de alumnos:");
-  cantNombres = int.tryParse(stdin.readLineSync()!) ?? 0;
+  var opcion1;
+  do {
+    print("¿Desea utilizar los nombres predeterminados o ingresarlos manualmente?");
+    print("1. Utilizar los nombres predefinidos");
+    print("2. Ingresar los nombres manualmente");
+    print("Digite la opción deseada:");
 
-  for (var i = 0; i < cantNombres; i++) {
-    print("Ingrese el nombre #${i + 1}:");
-    nombre = stdin.readLineSync()!;
-    nombres.add(nombre);
-  }
+    opcion1 = int.tryParse(stdin.readLineSync()!) ?? 0;
+
+    switch (opcion1) {
+      case 1:
+        nombres = [
+          "ANDRES FELIPE SANCHEZ HURTADO",
+          "ANGIE DAHIANA RIOS QUINTERO",
+          "CRISTIAN ALVAREZ ARANZAZU",
+          "DANIEL ESTIVEN ARBOLEDA DUQUE",
+          "DAVID ANDRES MORALES GUAPACHA",
+          "DAVID STIVEN OCAMPO LONDONNO",
+          "ESTEBAN REYES AGUDELO",
+          "JACOBO GALVIS JIMENEZ",
+          "JAIME ANDRES CALLE SALAZAR",
+          "JEFERSON MAURICIO HERNANDEZ LADINO",
+          "JHON ALEXANDER PINEDA OSORIO",
+          "JOSE MIGUEL SIERRA ARISTIZABAL",
+          "JOSE SEBASTIAN OCAMPO LOPEZ",
+          "JUAN ANDRES OSORIO GOMEZ",
+          "JUAN DIEGO CALVO OSORIO",
+          "JUAN ESTEBAN LOPEZ CALLE",
+          "JUAN PABLO RIOS ARISTIZABAL",
+          "MARIA PAULA MELO SOLANO",
+          "MIGUEL ANGEL PENNA JIMENEZ",
+          "SAMUEL CASTANNO CARDONA",
+          "JUAN JOSE POSADA PEREZ",
+          "ALEJANDRO SERNA LONDONNO",
+          "JUAN MANUEL ZULUAGA RINCON",
+          "JUAN DANIEL GOMEZ LASERNA",
+          "YERSON STIVEN HERRERA OBANDO",
+          "MATEO HERRERA VARGAS",
+          "ALEJANDRO VALLEJO ESCOBAR"
+        ];
+        break;
+      case 2:
+        print("Ingrese la cantidad de alumnos:");
+        cantNombres = int.tryParse(stdin.readLineSync()!) ?? 0;
+        for (var i = 0; i < cantNombres; i++) {
+          print("Ingrese el nombre #${i + 1}:");
+          nombre = stdin.readLineSync()!;
+          nombres.add(nombre);
+        }
+        break;
+      default:
+        print("Opción incorrecta, por favor elija una opción válida.");
+    }
+  } while (opcion1 != 1 && opcion1 != 2);
 
   var grupos = <List<String>>[];
   var personasRestantes = [...nombres];
@@ -112,9 +158,9 @@ List<List<String>> crearGrupos() {
 int _calcularCantidadPersonas(String dificultad) {
   switch (dificultad) {
     case 'facil':
-      return 3;
+      return 2;
     case 'medio':
-      return 4;
+      return 3;
     case 'alto':
       return Random().nextInt(2) + 4; // Entre 4 y 5 personas
     default:
