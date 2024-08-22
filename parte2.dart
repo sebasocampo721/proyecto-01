@@ -164,21 +164,19 @@ int _calcularCantidadPersonas(String dificultad) {
     case 'medio':
       return 3;
     case 'alto':
-      return Random().nextInt(2) + 4; // Entre 4 y 5 personas
+      return Random().nextInt(2) + 4; 
     default:
-      return 0; // valor por defecto
+      return 0; 
   }
 }
 
 void reorganizarGrupos(List<Grupo> grupos) {
   print("Reorganización de Grupos:");
 
-  // Mostrar los grupos actuales
   for (var i = 0; i < grupos.length; i++) {
     print('Grupo ${i + 1}: Tema: ${grupos[i].tema}, Miembros: ${grupos[i].nombres}');
   }
 
-  // Permitir al usuario seleccionar un grupo y reorganizarlo
   print("Ingrese el número de grupo que desea reorganizar (1-${grupos.length}):");
   var grupoSeleccionado = int.tryParse(stdin.readLineSync()!) ?? 0;
 
